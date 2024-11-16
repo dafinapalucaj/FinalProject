@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/declarations.d.ts","./src/global.d.ts","./src/main.tsx","./src/components/CalendarView.tsx","./src/components/EventForm.tsx","./src/components/RegisterForEvent.tsx","./src/components/UserEvents.tsx","./src/components/UserForm.tsx","./src/pages/EventListPage.tsx","./src/pages/HomePage.tsx","./src/pages/UserEventsPage.tsx"],"version":"5.6.3"}

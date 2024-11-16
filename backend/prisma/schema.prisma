@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  name        String        @unique 
+  events      Event[]       @relation("CreatedEvents")
+  registrations Registration[]
+}
+
+model Event {
+  id          Int           @id @default(autoincrement())
+  title       String        @unique // Make the title unique
+  description String?
+  date        DateTime
+  createdBy   String        
+  creator     User          @relation("CreatedEvents", fields: [createdBy], references: [name]) 
+  registrations Registration[]
+}
+
+model Registration {
+  id          Int           @id @default(autoincrement())
+  userName    String        
+  eventName   String        
+
+  user        User          @relation(fields: [userName], references: [name])  
+  event       Event         @relation(fields: [eventName], references: [title]) 
+
+  @@unique([userName, eventName]) // Ensure unique registration by user and event name
+}
